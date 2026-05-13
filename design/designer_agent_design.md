@@ -14,6 +14,7 @@
      - [Stage 2: Exploration](#stage-2-exploration)
      - [Stage 3: Consolidation](#stage-3-consolidation)
      - [Stage 4: Finalization](#stage-4-finalization)
+     - [Stage 5: Review and Consistency Check](#stage-5-review-and-consistency-check)
 3. [Design Output Rules](#design-output-rules)
 4. [Data Management](#data-management)
 5. [Why this is the Best Approach](#why-this-is-the-best-approach)
@@ -55,6 +56,11 @@ The Designer Agent itself is a standard Main Agent session. It acts as the Scope
 **Stage 4: Finalization (Sequential)**
 1. Main Agent uses `view_file` or `grep_search` to read the 3 consolidated designs from `stage3/`.
 2. Main Agent evaluates the 3 options, decides on the final architecture, and uses `write_to_file` to output `final_design.md`.
+
+**Stage 5: Review and Consistency Check (Sequential)**
+1. Main Agent uses `view_file` to read the newly generated `final_design.md`.
+2. Main Agent performs a strict review to ensure the design is internally consistent and that no content contradicts itself.
+3. If contradictions or inconsistencies are found, the Main Agent uses `write_to_file` or `replace_file_content` to apply corrections to `final_design.md`.
 
 ## Design Output Rules
 To ensure a high-quality user experience and maintain clarity, the following strict rules apply to the generation of all Consolidated Designs (Stage 3) and the Final Design (Stage 4):
